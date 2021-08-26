@@ -7,6 +7,13 @@ public class Transaction {
     public float amount;
     public float balance;
 
+    public Transaction(float amount, String type, float balance) {
+        this.amount = amount;
+        this.type = type;
+        this.balance = balance;
+        this.date = LocalDate.now();
+    }
+
     public Transaction(LocalDate date, float amount, String type, float balance) {
         this.amount = amount;
         this.type = type;

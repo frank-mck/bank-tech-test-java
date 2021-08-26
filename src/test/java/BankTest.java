@@ -35,4 +35,11 @@ public class BankTest {
 
         assertEquals(50, bank.showBalance());
     }
+
+    @Test
+    public void canViewBankBalance() {
+        Bank bank = new Bank(100);
+
+        assertEquals(100, bank.showBalance());
+    }
 }

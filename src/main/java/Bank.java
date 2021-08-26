@@ -3,8 +3,8 @@ import java.time.LocalDate;
 
 public class Bank {
     private float balance;
-    private LocalDate date = LocalDate.now();
-    public ArrayList<Transaction> transactions;
+    private final LocalDate date = LocalDate.now();
+    ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
     public Bank() {
         this.balance = 0;
@@ -19,7 +19,7 @@ public class Bank {
             throw new ArithmeticException("Cannot deposit negative amount");
         }
         this.balance += amount;
-        this.transactions.add(new Transaction(date, amount, "credit", this.balance));
+        transactions.add(new Transaction(amount, "credit", this.balance));
    }
 
    public void withdraw(float amount) {
@@ -27,7 +27,7 @@ public class Bank {
             throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
         }
        this.balance -= amount;
-       this.transactions.add(new Transaction(date, amount, "debit", this.balance));
+       this.transactions.add(new Transaction(amount, "debit", this.balance));
    }
 
    public float showBalance() {

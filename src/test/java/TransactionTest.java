@@ -7,10 +7,10 @@ import java.time.LocalDate;
 public class TransactionTest {
     @Test
     public void viewDebitTransactionLog() {
-        Transaction transaction = new Transaction(LocalDate.now(), 500, "debit", 1000);
+        Transaction transaction = new Transaction(LocalDate.of(2021, 3, 21), 500, "debit", 1000);
         transaction.addTransaction();
 
-        assertEquals(LocalDate.now() + " || - || 500.0 || 500.0", transaction.log);
+        assertEquals(LocalDate.of(2021, 3, 21) + " || - || 500.0 || 500.0", transaction.log);
     }
 
     @Test
