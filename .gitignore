@@ -95,3 +95,5 @@ atlassian-ide-plugin.xml
 
 # oh-my-zsh gradle plugin
 .gradletasknamecache
+# Ignore Gradle build output directory
+build
