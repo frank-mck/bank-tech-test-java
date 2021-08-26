@@ -3,15 +3,23 @@ package main.java;
 public class Bank {
    private float balance;
 
+   public Bank() {
+       this.balance = 0;
+   }
+
+   public Bank(float startingBalance) {
+       this.balance += startingBalance;
+   }
+
    public void deposit(int amount) {
-       balance += amount;
+       this.balance += amount;
    }
 
     public void withdraw(int amount) {
-       balance -= amount;
+       this.balance -= amount;
    }
 
    public float showBalance() {
-       return balance;
+       return this.balance;
    }
 }
