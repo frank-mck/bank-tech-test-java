@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class TransactionTest {
     @Test
-    public void viewDebitTransactionLog() {
+    public void viewDebitTransactionLogWithDate() {
         Transaction transaction = new Transaction(LocalDate.of(2021, 3, 21), 500, "debit", 1000);
         transaction.addTransaction();
 
