@@ -7,6 +7,10 @@ public class Bank {
        balance += amount;
    }
 
+    public void withdraw(int amount) {
+       balance -= amount;
+   }
+
    public float showBalance() {
        return balance;
    }
