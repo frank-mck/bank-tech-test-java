@@ -13,12 +13,15 @@ public class Bank {
 
     public void deposit(int amount) {
         if (amount < this.balance) {
-            throw new ArithmeticException("Cannot withdraw negative amount");
+            throw new ArithmeticException("Cannot deposit negative amount");
         }
         this.balance += amount;
    }
 
    public void withdraw(int amount) {
+        if (amount > this.balance) {
+            throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
+        }
        this.balance -= amount;
    }
 

@@ -16,6 +16,14 @@ public class BankTest {
     }
 
     @Test
+    public void cannotWithdrawGreaterThanBalance() {
+        Bank bank = new Bank(100);
+
+        Assertions.assertThrows(ArithmeticException.class, () ->
+                bank.withdraw(101));
+    }
+
+    @Test
     public void canDepositMoney() {
         Bank bank = new Bank();
         bank.deposit(100);
