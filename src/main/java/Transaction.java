@@ -19,6 +19,8 @@ public class Transaction {
             this.log = this.date + " || " + this.amount + " || - || " + (this.balance + this.amount);
         } else if (this.type == "debit") {
             this.log = this.date + " || - || " + this.amount + " || " + (this.balance - this.amount);
+        } else {
+            throw new ArithmeticException("Invalid transaction type");
         }
     }
 }

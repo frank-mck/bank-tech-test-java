@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,5 +19,13 @@ public class TransactionTest {
         transaction.addTransaction();
 
         assertEquals(LocalDate.now() + " || 500.0 || - || 1500.0", transaction.log);
+    }
+
+    @Test
+    public void throwErrorWhenWrongTransactionType() {
+        Transaction transaction = new Transaction(LocalDate.now(), 4000, "cwedit",  2000);
+
+        Assertions.assertThrows(ArithmeticException.class, () ->
+                transaction.addTransaction());
     }
 }
