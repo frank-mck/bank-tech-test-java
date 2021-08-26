@@ -2,10 +2,19 @@ package test.java;
 
 import main.java.Bank;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTest {
+    @Test
+    public void cannotDepositNegativeAmount() {
+      Bank bank = new Bank();
+
+      Assertions.assertThrows(ArithmeticException.class, () ->
+          bank.deposit(-100));
+    }
+
     @Test
     public void canDepositMoney() {
         Bank bank = new Bank();
