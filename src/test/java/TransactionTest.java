@@ -11,4 +11,12 @@ public class TransactionTest {
 
         assertEquals(LocalDate.now() + " || - || 500.0 || 500.0", transaction.log);
     }
+
+    @Test
+    public void viewCreditTransactionLog() {
+        Transaction transaction = new Transaction(LocalDate.now(), 500, "credit", 1000);
+        transaction.addTransaction();
+
+        assertEquals(LocalDate.now() + " || 500.0 || - || 1500.0", transaction.log);
+    }
 }
