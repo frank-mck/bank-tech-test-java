@@ -1,52 +1,53 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Bank {
     private float balance;
     private final LocalDate date = LocalDate.now();
-    ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
-    public Bank() {
+     Bank() {
         this.balance = 0;
     }
 
-    public Bank(float startingBalance) {
+     Bank(float startingBalance) {
         this.balance += startingBalance;
     }
 
-    public void deposit(float amount) {
+     void deposit(float amount) {
         if (amount < this.balance) {
             throw new ArithmeticException("Cannot deposit negative amount");
         }
         this.balance += amount;
-        transactions.add(new Transaction(LocalDate.now(), amount, "credit", this.balance));
+        transactions.add(new Transaction(LocalDate.now(), amount, TransactionType.CREDIT, this.balance));
    }
 
-    public void deposit(float amount, LocalDate date) {
+     void deposit(float amount, LocalDate date) {
         if (amount < this.balance) {
             throw new ArithmeticException("Cannot deposit negative amount");
         }
         this.balance += amount;
-        transactions.add(new Transaction(date, amount, "credit", this.balance));
+        transactions.add(new Transaction(date, amount, TransactionType.CREDIT, this.balance));
     }
 
-   public void withdraw(float amount) {
+    void withdraw(float amount) {
         if (amount > this.balance) {
             throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
         }
        this.balance -= amount;
-       this.transactions.add(new Transaction(LocalDate.now(), amount, "debit", this.balance));
+       this.transactions.add(new Transaction(LocalDate.now(), amount, TransactionType.DEBIT, this.balance));
    }
 
-    public void withdraw(float amount, LocalDate date) {
+     void withdraw(float amount, LocalDate date) {
         if (amount > this.balance) {
             throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
         }
         this.balance -= amount;
-        this.transactions.add(new Transaction(date, amount, "debit", this.balance));
+        this.transactions.add(new Transaction(date, amount, TransactionType.DEBIT, this.balance));
     }
 
-   public float showBalance() {
+    float showBalance() {
        return this.balance;
    }
 }
