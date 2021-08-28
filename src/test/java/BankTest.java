@@ -49,4 +49,18 @@ public class BankTest {
 
         assertEquals(100, bank.showBalance());
     }
+
+    @DisplayName("Print a statement")
+    @Test
+    void canPrintStatement() {
+        Bank bank = new Bank();
+        bank.deposit(1000);
+        bank.deposit(2000);
+        bank.withdraw(500);
+
+        assertEquals("date || credit || debit || balance\n" +
+                "2021-08-28 || - || 500.0 || 2500.0\n" +
+                "2021-08-28 || 2000.0 || - || 3000.0\n" +
+                "2021-08-28 || 1000.0 || - || 1000.0\n", bank.generateStatement());
+    }
 }
