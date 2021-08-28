@@ -1,15 +1,20 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Statement {
-    public Bank bank;
+    public ArrayList<String> transactions = new ArrayList<>();
+    public String output = "";
 
-    public Statement(Bank bank) {
-      this.bank = new Bank();
+    public void addTransaction(String transaction) {
+        transactions.add(transaction);
     }
 
-    public Statement() {
-
-    }
-
-    public Bank printStatement() {
-        return this.bank;
+    public String printStatement() {
+        this.transactions.add("date || credit || debit || balance");
+        Collections.reverse(this.transactions);
+        this.transactions.forEach(transaction -> {
+            this.output += transaction + "\n";
+        });
+        return this.output;
     }
 }

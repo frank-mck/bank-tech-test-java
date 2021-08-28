@@ -1,9 +1,11 @@
 
 public class Main {
     public static void main(String[] args) {
-        Bank bank1 = new Bank(5000);
-        bank1.withdraw(1000);
+        Bank bank = new Bank();
+        bank.deposit(1000);
+        bank.deposit(2000);
+        bank.withdraw(500);
 
-        System.out.println("Bank1 has a balance of " + bank1.showBalance());
+        System.out.println(bank.generateStatement());
     }
 }

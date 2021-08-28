@@ -8,16 +8,16 @@ public class TransactionTest {
     @Test
     void viewDebitTransactionLogWithDate() {
         Transaction transaction = new Transaction(LocalDate.of(2021, 3, 21), 500, TransactionType.DEBIT, 1000);
-        transaction.addTransaction();
+        transaction.saveTransaction();
 
-        assertEquals(LocalDate.of(2021, 3, 21) + " || - || 500.0 || 500.0", transaction.log);
+        assertEquals(LocalDate.of(2021, 3, 21) + " || - || 500.0 || 1000.0", transaction.log);
     }
 
     @Test
     void viewCreditTransactionLog() {
         Transaction transaction = new Transaction(LocalDate.now(), 500, TransactionType.CREDIT, 1000);
-        transaction.addTransaction();
+        transaction.saveTransaction();
 
-        assertEquals(LocalDate.now() + " || 500.0 || - || 1500.0", transaction.log);
+        assertEquals(LocalDate.now() + " || 500.0 || - || 1000.0", transaction.log);
     }
 }

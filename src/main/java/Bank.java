@@ -1,10 +1,9 @@
-import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class Bank {
     private float balance;
     private final LocalDate date = LocalDate.now();
-    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private Statement statement = new Statement();
 
      Bank() {
         this.balance = 0;
@@ -15,35 +14,29 @@ public class Bank {
     }
 
      void deposit(float amount) {
-        if (amount < this.balance) {
+        if (amount < 0) {
             throw new ArithmeticException("Cannot deposit negative amount");
         }
         this.balance += amount;
-        transactions.add(new Transaction(LocalDate.now(), amount, TransactionType.CREDIT, this.balance));
+        addTransactions(this.date, amount, TransactionType.CREDIT, this.balance);
    }
 
-     void deposit(float amount, LocalDate date) {
-        if (amount < this.balance) {
-            throw new ArithmeticException("Cannot deposit negative amount");
-        }
-        this.balance += amount;
-        transactions.add(new Transaction(date, amount, TransactionType.CREDIT, this.balance));
-    }
-
-    void withdraw(float amount) {
-        if (amount > this.balance) {
-            throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
-        }
-       this.balance -= amount;
-       this.transactions.add(new Transaction(LocalDate.now(), amount, TransactionType.DEBIT, this.balance));
-   }
-
-     void withdraw(float amount, LocalDate date) {
+     void withdraw(float amount) {
         if (amount > this.balance) {
             throw new ArithmeticException("Amount exceeds account balance of " + this.balance);
         }
         this.balance -= amount;
-        this.transactions.add(new Transaction(date, amount, TransactionType.DEBIT, this.balance));
+        addTransactions(this.date, amount, TransactionType.DEBIT, this.balance);
+   }
+
+    void addTransactions(LocalDate date, float amount, TransactionType type, float balance) {
+         Transaction transaction = new Transaction(date, amount, type, balance);
+         transaction.saveTransaction();
+         statement.addTransaction(transaction.log);
+    }
+
+    public String generateStatement() {
+         return this.statement.printStatement();
     }
 
     float showBalance() {

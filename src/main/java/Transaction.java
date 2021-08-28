@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 class Transaction {
-    String log;
+    public String log;
     LocalDate date;
     TransactionType type;
     float amount;
@@ -14,14 +14,21 @@ class Transaction {
         this.date = date;
     }
 
+    Transaction(float amount, TransactionType type, float balance) {
+        this.amount = amount;
+        this.type = type;
+        this.balance = balance;
+    }
 
-    void addTransaction() {
+
+    Transaction saveTransaction() {
         if (this.type == TransactionType.CREDIT) {
-            this.log = this.date + " || " + this.amount + " || - || " + (this.balance + this.amount);
+            this.log = this.date + " || " + this.amount + " || - || " + this.balance;
         } else if (this.type == TransactionType.DEBIT) {
-            this.log = this.date + " || - || " + this.amount + " || " + (this.balance - this.amount);
+            this.log = this.date + " || - || " + this.amount + " || " + this.balance;
         } else {
             throw new ArithmeticException("Invalid transaction type");
         }
+        return null;
     }
 }
