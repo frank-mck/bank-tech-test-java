@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Bank Test")
@@ -59,8 +61,8 @@ public class BankTest {
         bank.withdraw(500);
 
         assertEquals("date || credit || debit || balance\n" +
-                "2021-08-28 || - || 500.0 || 2500.0\n" +
-                "2021-08-28 || 2000.0 || - || 3000.0\n" +
-                "2021-08-28 || 1000.0 || - || 1000.0\n", bank.generateStatement());
+                LocalDate.now() + " || - || 500.0 || 2500.0\n" +
+                LocalDate.now() + " || 2000.0 || - || 3000.0\n" +
+                LocalDate.now() + " || 1000.0 || - || 1000.0\n", bank.generateStatement());
     }
 }
