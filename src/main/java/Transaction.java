@@ -13,13 +13,6 @@ class Transaction {
         this.date = date;
     }
 
-    Transaction(float amount, TransactionType type, float balance) {
-        this.amount = amount;
-        this.type = type;
-        this.balance = balance;
-    }
-
-
     public String toString() {
         if (this.type == TransactionType.CREDIT) {
             return this.date + " || " + this.amount + " || - || " + this.balance;

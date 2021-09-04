@@ -11,9 +11,9 @@ public class StatementTest {
     void displayStatement() {
       Bank bank = new Bank();
       bank.deposit(200);
-      Statement statement = new Statement(bank.transactions);
+      Statement statement = new Statement();
 
       assertEquals("date || credit || debit || balance" + "\n" +
-                             LocalDate.now() + " || " + "200.0" + " || - || 200.0" + "\n", statement.printStatement());
+                             LocalDate.now() + " || " + "200.0" + " || - || 200.0" + "\n", statement.printStatement(bank.transactions));
   }
 }

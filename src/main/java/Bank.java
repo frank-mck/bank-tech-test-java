@@ -5,7 +5,7 @@ public class Bank {
     private float balance;
     private final LocalDate date = LocalDate.now();
     public ArrayList<String> transactions = new ArrayList<>();
-    private Statement statement = new Statement(this.transactions);
+    private Statement statement = new Statement();
 
      Bank() {
         this.balance = 0;
@@ -37,7 +37,7 @@ public class Bank {
     }
 
     public String generateStatement() {
-         return this.statement.printStatement();
+         return this.statement.printStatement(this.transactions);
     }
 
     float getBalance() {
