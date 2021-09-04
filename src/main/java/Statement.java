@@ -2,15 +2,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Statement {
-    public ArrayList<String> transactions = new ArrayList<>();
+    public ArrayList<String> transactions;
     public String output = "";
 
-    public void addTransaction(String transaction) {
-        transactions.add(transaction);
+    public Statement(ArrayList<String> transactions) {
+        this.transactions = transactions;
+    }
+
+    public Statement() {
     }
 
     public String printStatement() {
-        this.transactions.add("date || credit || debit || balance");
+        this.output = "";
+        this.output += "date || credit || debit || balance" + "\n";
         Collections.reverse(this.transactions);
         this.transactions.forEach(transaction -> {
             this.output += transaction + "\n";

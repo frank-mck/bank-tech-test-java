@@ -32,7 +32,7 @@ public class BankTest {
         Bank bank = new Bank();
         bank.deposit(100);
 
-        assertEquals(100, bank.showBalance());
+        assertEquals(100, bank.getBalance());
     }
 
     @DisplayName("withdraw money")
@@ -41,7 +41,7 @@ public class BankTest {
         Bank bank = new Bank(100);
         bank.withdraw(50);
 
-        assertEquals(50, bank.showBalance());
+        assertEquals(50, bank.getBalance());
     }
 
     @DisplayName("view balance")
@@ -49,7 +49,7 @@ public class BankTest {
     void canViewBankBalance() {
         Bank bank = new Bank(100);
 
-        assertEquals(100, bank.showBalance());
+        assertEquals(100, bank.getBalance());
     }
 
     @DisplayName("Print a statement")

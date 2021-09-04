@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class Bank {
     private float balance;
     private final LocalDate date = LocalDate.now();
-    private Statement statement = new Statement();
+    public ArrayList<String> transactions = new ArrayList<>();
+    private Statement statement = new Statement(this.transactions);
 
      Bank() {
         this.balance = 0;
@@ -31,15 +33,14 @@ public class Bank {
 
     void addTransactions(LocalDate date, float amount, TransactionType type, float balance) {
          Transaction transaction = new Transaction(date, amount, type, balance);
-         transaction.saveTransaction();
-         statement.addTransaction(transaction.log);
+         this.transactions.add(transaction.toString());
     }
 
     public String generateStatement() {
          return this.statement.printStatement();
     }
 
-    float showBalance() {
+    float getBalance() {
        return this.balance;
    }
 }
